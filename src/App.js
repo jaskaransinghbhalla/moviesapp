@@ -10,16 +10,22 @@ const App = () => {
 
   const searchMovies = async (title) => {
     try {
-      const response = await fetch(`${API_URL}&s=${title}`);
+      const url = `${API_URL}&s=${title}`;
+      const response = await fetch(
+        `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
+      );
       const data = await response.json();
-      setMovies(data.Search);
+      const parsedData = JSON.parse(data.contents);
+      setMovies(parsedData.Search);
     } catch (e) {
       console.log(e);
       // alert(e);
     }
   };
-// eslint-disable-next-line
-  useEffect(() => {searchMovies("Netflix");}, []);
+  // eslint-disable-next-line
+  useEffect(() => {
+    searchMovies("Netflix");
+  }, []);
 
   return (
     <div className="app">
