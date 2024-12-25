@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
-
 const App = () => {
   const API_URL = process.env.REACT_APP_API_URL;
   const [searchTerm, setSearchTerm] = useState("");
