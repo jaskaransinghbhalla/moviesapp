@@ -1,9 +1,13 @@
-// Importing React and React Document Object Model 
-import React from 'react';
-import ReactDOM from 'react-dom';
+// Importing React and React Document Object Model
+import React from "react";
+import { createRoot } from "react-dom/client";
 
 // Importing App -> First App Created by us.
-import App from './App.js';
+import App from "./App.js";
 
-// Asking ReactDOM to render the App name "App" to 'root' element by using JS
-ReactDOM.render(<App />, document.getElementById('root'))
+// Creating a root.
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+// Rendering the App component.
+root.render(<App />);
