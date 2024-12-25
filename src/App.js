@@ -5,18 +5,22 @@ import SearchIcon from "./search.svg";
 import "./App.css";
 
 const App = () => {
-  const API_URL = process.env.API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
   const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
-    setMovies(data.Search);
+    try {
+      const response = await fetch(`${API_URL}&s=${title}`);
+      const data = await response.json();
+      setMovies(data.Search);
+    } catch (e) {
+      console.log(e);
+      // alert(e);
+    }
   };
-  useEffect(() => {
-    searchMovies("Netflix");
-  });
+// eslint-disable-next-line
+  useEffect(() => {searchMovies("Netflix");}, []);
 
   return (
     <div className="app">
